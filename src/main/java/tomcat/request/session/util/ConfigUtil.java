@@ -124,6 +124,9 @@ public class ConfigUtil {
 
             String expression = key.substring(beginIndex + 2, endIndex);
             String value = System.getProperty(expression);
+            
+            if (value == null)
+				value = System.getenv(expression);
 
             if (value == null || value.isEmpty()) {
                 fromIndex = endIndex + 1;
